@@ -1,14 +1,11 @@
-import Link from 'next/link';
+import Link from "next/link";
 
-export const dynamic = 'force-dynamic',
+export const dynamic = "force-dynamic",
   revalidate = 0;
 
-function getRandomNumber() {
-  return Math.random();
-}
-
-export default function NestedPage() {
-  const number = getRandomNumber();
+export default async function NestedPage() {
+  const res = await fetch("http://localhost:3000/api/random");
+  const { number } = await res.json();
 
   return (
     <div>
